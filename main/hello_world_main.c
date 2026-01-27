@@ -32,13 +32,14 @@ void app_main(void)
         // 1 = LED on (3.3V output), 0 = LED off (0V output)
         gpio_set_level(LED_PIN, led_on);
         
-        // Only print message when LED turns on (not when it turns off)
-        if (led_on) {
-            // Get current time in microseconds and print it
-            printf("Hello World! Timestamp: %lld us\n", esp_timer_get_time());
+        // Only print message when LED toggles from OFF to ON
+        if (led_on == 1) {
+            // Get current time in microseconds, convert to milliseconds
+            int64_t time_ms = esp_timer_get_time() / 1000;
+            printf("Hello World! Timestamp: %lld ms\n", time_ms);
         }
         
         // Wait 1 second (1000 milliseconds) before doing the next loop
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 }
