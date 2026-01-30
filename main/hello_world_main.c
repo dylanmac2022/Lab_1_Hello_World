@@ -37,15 +37,7 @@ void app_main(void)
         
         // Set this pin as OUTPUT so we can control the LED
         .mode = GPIO_MODE_OUTPUT,
-        
-        // Disable internal pull-up resistor (LED circuit doesn't need it)
-        .pull_up_en = GPIO_PULLUP_DISABLE,
-        
-        // Disable internal pull-down resistor (LED circuit doesn't need it)
-        .pull_down_en = GPIO_PULLDOWN_DISABLE,
-        
-        // Disable interrupts (we don't need to detect pin changes)
-        .intr_type = GPIO_INTR_DISABLE,
+
     };
     
     // Apply the configuration to GPIO2
